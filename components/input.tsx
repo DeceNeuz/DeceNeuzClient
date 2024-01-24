@@ -29,7 +29,7 @@ export const Input = ({
   return (
     <div
       className={cn(
-        "flex justify-between items-center gap-4 p-3 text-slate-500 focus-within:text-orange-500 border border-slate-300 rounded text-sm min-w-80 focus-within:border-orange-500 transition-all duration-200 ease-in",
+        "flex justify-between items-center gap-4 p-3 text-slate-500 focus-within:text-orange-500 border border-slate-300 rounded text-sm w-full max-w-80 focus-within:border-orange-500 transition-all duration-200 ease-in",
         className
       )}
     >

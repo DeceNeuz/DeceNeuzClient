@@ -26,18 +26,18 @@ export default function SignUpPage() {
   };
 
   return (
-    <div className="w-full flex flex-col gap-16 justify-center items-center h-full">
+    <div className="flex h-full w-full flex-col items-center justify-center gap-16">
       {/* Headline */}
-      <div className="flex justify-center items-center flex-col">
+      <div className="flex flex-col items-center justify-center">
         <h1 className="font-oswald text-3xl font-semibold">JOIN US TODAY</h1>
-        <p className="font-normal text-slate-500 text-center">
+        <p className="text-center font-normal text-slate-500">
           Redefining Journalism for Tomorrow.
         </p>
       </div>
       {/* Form */}
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col justify-center items-center gap-4"
+        className="flex flex-col items-center justify-center gap-4"
       >
         <Input
           type="text"
@@ -64,14 +64,14 @@ export default function SignUpPage() {
           icon={<KeyRound size={18} />}
         />
         <Button
-          className="bg-orange-500 hover:bg-orange-600 w-full max-w-80 mt-6 text-sm px-8 py-2 rounded"
+          className="mt-6 w-full max-w-80 rounded bg-orange-500 px-8 py-2 text-sm hover:bg-orange-600"
           type="submit"
         >
           Sign Up
         </Button>
         <Button
           variant={"outline"}
-          className="text-slate-500 bg-transparent w-full max-w-80 text-sm px-8 py-2 rounded"
+          className="w-full max-w-80 rounded bg-transparent px-8 py-2 text-sm text-slate-500"
           type="submit"
         >
           <Image src={googleLogo} alt="Google Logo" className="mr-3" />
@@ -81,7 +81,7 @@ export default function SignUpPage() {
           Have an account?{" "}
           <Link
             href="/sign-in"
-            className="text-orange-500 hover:text-orange-600 font-medium"
+            className="font-medium text-orange-500 hover:text-orange-600"
           >
             Sign in here
           </Link>

@@ -71,7 +71,7 @@ export default function SignInPage() {
         <div className="mt-4 text-sm text-slate-500 ">
           New here?{" "}
           <Link
-            href="/sign-in"
+            href="/sign-up"
             className="font-medium text-orange-500 hover:text-orange-600"
           >
             Sign up here

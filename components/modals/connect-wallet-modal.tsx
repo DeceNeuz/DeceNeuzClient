@@ -51,8 +51,8 @@ export default function ConnectWalletModal() {
               src={metamaskLogo}
               alt="MetaMask Logo"
               className="mr-3"
-              height={18}
-              width={18}
+              height={24}
+              width={24}
             />
             Connect MetaMask
           </Button>

@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 interface LogoProps {
   className?: string;
@@ -6,14 +7,15 @@ interface LogoProps {
 
 export default function Logo({ className }: LogoProps) {
   return (
-    <span
+    <Link
+      href={"/"}
       className={cn(
-        "font-oswald text-2xl font-semibold lg:text-3xl",
+        "cursor-pointer font-oswald text-2xl font-semibold lg:text-3xl",
         className
       )}
     >
       <span className="text-orange-500">DECE</span>
       <span className="text-slate-900">NUEZ</span>
-    </span>
+    </Link>
   );
 }

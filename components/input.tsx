@@ -1,13 +1,15 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Eye, EyeOff, LucideProps } from "lucide-react";
+import { Eye, EyeOff, LucideProps, Search } from "lucide-react";
 import { ChangeEvent, ReactNode, useState } from "react";
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   icon?: ReactNode;
   onTogglePassword?: () => void;
   className?: string;
+  onSearch?: () => void;
+  isSearch?: boolean;
 }
 
 export const Input = ({
@@ -18,6 +20,8 @@ export const Input = ({
   icon,
   onTogglePassword,
   className,
+  onSearch,
+  isSearch,
   ...props
 }: InputProps) => {
   const [showPassword, setshowPassword] = useState(false);
@@ -29,15 +33,21 @@ export const Input = ({
   return (
     <div
       className={cn(
-        "flex justify-between items-center gap-4 p-3 text-slate-500 focus-within:text-orange-500 border border-slate-300 rounded text-sm w-full max-w-80 focus-within:border-orange-500 transition-all duration-200 ease-in",
+        "flex w-full max-w-80 items-center justify-between gap-4 rounded border border-slate-300 p-3 text-sm text-slate-500 transition-all duration-200 ease-in focus-within:border-orange-500 focus-within:text-orange-500",
         className
       )}
     >
+      {/* Search Button */}
+      {isSearch && (
+        <span className="cursor-pointer">
+          <Search size={18} />
+        </span>
+      )}
       {/* Icon */}
       {icon}
       {/* Input */}
       <input
-        className="bg-transparent w-full placeholder:text-slate-500 focus:outline-none text-slate-900 placeholder:font-medium font-medium transition-all duration-200 ease-in text-sm outline-none border-none"
+        className="w-full border-none bg-transparent text-sm font-medium text-slate-900 outline-none transition-all duration-200 ease-in placeholder:font-medium placeholder:text-slate-500 focus:outline-none"
         type={showPassword ? "text" : type}
         placeholder={placeholder}
         value={value}

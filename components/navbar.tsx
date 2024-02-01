@@ -27,7 +27,7 @@ export default function Navbar() {
         <div className="flex gap-4">
           <Button
             variant={"outline"}
-            className="flex gap-2 rounded text-sm text-slate-500 hover:border-orange-500 hover:bg-white hover:text-orange-500"
+            className="flex gap-2 rounded bg-transparent text-sm text-slate-500 hover:border-orange-500 hover:bg-transparent hover:text-orange-500"
             onClick={() => onOpen("CONNECT-WALLET")}
           >
             <PenLine size={16} />

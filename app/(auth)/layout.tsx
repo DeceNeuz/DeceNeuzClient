@@ -8,11 +8,7 @@ export default function AuthLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex h-screen text-slate-900">
-      <section className="flex w-full flex-col bg-slate-50 p-8">
-        <Logo />
-        {children}
-      </section>
+    <div className="flex h-screen w-full text-slate-900">
       <section className="hidden w-full lg:flex">
         <Image
           src={authImage}
@@ -20,6 +16,10 @@ export default function AuthLayout({
           style={{ objectFit: "cover" }}
           className="w-full"
         />
+      </section>
+      <section className="flex w-full flex-col bg-slate-50 p-8">
+        <Logo />
+        {children}
       </section>
     </div>
   );

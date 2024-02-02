@@ -1,7 +1,8 @@
+import { ModalProvider } from "@/components/providers/modal-provider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { ThirdwebProvider } from "../components/providers/thirdweb-provider";
 import "./globals.css";
-import { ModalProvider } from "@/components/providers/modal-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,10 +18,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-slate-50 font-inter">
-        <ModalProvider />
-        {children}
-      </body>
+      <ThirdwebProvider>
+        <body className={inter.className}>
+          <ModalProvider />
+          {children}
+        </body>
+      </ThirdwebProvider>
     </html>
   );
 }

@@ -14,6 +14,12 @@ import { Button } from "../ui/button";
 import Image from "next/image";
 import connectWalletIllustration from "@/public/wallet-connect.png";
 import metamaskLogo from "@/public/metamask-icon.png";
+import {
+  useConnect,
+  metamaskWallet,
+} from "@thirdweb-dev/react";
+const walletConfig = metamaskWallet();
+
 
 export default function ConnectWalletModal() {
   const { isOpen, onClose, type } = useModal();
@@ -23,6 +29,20 @@ export default function ConnectWalletModal() {
   const handleClose = () => {
     onClose();
   };
+
+  const connect = useConnect();
+
+  async function handleConnect() {
+    try {
+      const wallet = await connect(
+        walletConfig,
+      );
+
+      console.log("connected to", wallet);
+    } catch (e) {
+      console.error("failed to connect", e);
+    }
+  }
 
   return (
     <Dialog open={isModalOpen} onOpenChange={handleClose}>
@@ -39,13 +59,13 @@ export default function ConnectWalletModal() {
             Oops...
           </h1>
           <p className="text-center text-sm text-slate-500">
-            Looks like you haven't connected your crypto wallet yet! Connect now
+            Looks like you havent connected your crypto wallet yet! Connect now
             to write articles as well as receive incentives.
           </p>
           <Button
             variant={"outline"}
             className="w-full max-w-80 rounded bg-orange-500 px-8 py-2 text-sm text-white hover:bg-orange-600 hover:text-white"
-            type="submit"
+            onClick={handleConnect}
           >
             <Image
               src={metamaskLogo}

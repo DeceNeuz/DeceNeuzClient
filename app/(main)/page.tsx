@@ -1,3 +1,7 @@
+
+
 export default function Home() {
-  return <div>DeceNeuz</div>;
+  return <><div>DeceNeuz</div>
+  
+  </>;
 }

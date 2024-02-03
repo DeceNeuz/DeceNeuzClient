@@ -10,12 +10,12 @@ export default function Logo({ className }: LogoProps) {
     <Link
       href={"/"}
       className={cn(
-        "cursor-pointer font-oswald text-2xl font-semibold lg:text-3xl",
+        "cursor-pointer font-oswald text-2xl font-semibold text-slate-900 lg:text-3xl",
         className
       )}
     >
       <span className="text-orange-500">DECE</span>
-      <span className="text-slate-900">NUEZ</span>
+      <span>NUEZ</span>
     </Link>
   );
 }

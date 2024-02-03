@@ -7,8 +7,11 @@ import Image from "next/image";
 import { ChangeEvent, FormEvent, useState } from "react";
 import googleLogo from "@/public/devicon_google.png";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 
 export default function SignInPage() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -19,9 +22,14 @@ export default function SignInPage() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log("Form submitted with data: ", formData);
+    await signIn("credentials", {
+      ...formData,
+      redirect: false,
+    });
+    router.push("/editor");
   };
 
   return (

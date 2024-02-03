@@ -25,7 +25,7 @@ const TrendingSection = ({ data }: TrendingSectionProps) => {
         {data.map((article) => (
           <div
             key={article.ID}
-            className="group relative flex h-full w-full gap-3 overflow-hidden rounded bg-white p-2 shadow-sm first:col-span-2 first:row-span-4 first:p-0"
+            className="group relative flex h-full w-full gap-3 overflow-hidden rounded border border-slate-200 bg-white p-2 first:col-span-2 first:row-span-4 first:p-0"
           >
             <div className="flex-[3] overflow-hidden rounded">
               <Image

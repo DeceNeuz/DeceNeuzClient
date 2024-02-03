@@ -14,15 +14,13 @@ import { Button } from "../ui/button";
 import Image from "next/image";
 import connectWalletIllustration from "@/public/wallet-connect.png";
 import metamaskLogo from "@/public/metamask-icon.png";
-import {
-  useConnect,
-  metamaskWallet,
-} from "@thirdweb-dev/react";
+import { useConnect, metamaskWallet } from "@thirdweb-dev/react";
+import { useRouter } from "next/navigation";
 const walletConfig = metamaskWallet();
-
 
 export default function ConnectWalletModal() {
   const { isOpen, onClose, type } = useModal();
+  const router = useRouter();
 
   const isModalOpen = isOpen && type === "CONNECT-WALLET";
 
@@ -34,11 +32,9 @@ export default function ConnectWalletModal() {
 
   async function handleConnect() {
     try {
-      const wallet = await connect(
-        walletConfig,
-      );
-
-      console.log("connected to", wallet);
+      const wallet = await connect(walletConfig);
+      router.push("/editor");
+      onClose();
     } catch (e) {
       console.error("failed to connect", e);
     }

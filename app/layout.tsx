@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThirdwebProvider } from "../components/providers/thirdweb-provider";
 import "./globals.css";
+import { getServerSession } from "next-auth";
+import { AuthSessionProvider } from "@/components/providers/authsession-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,18 +13,21 @@ export const metadata: Metadata = {
   description: "Decentralized News WebApp",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await getServerSession();
   return (
     <html lang="en">
       <ThirdwebProvider>
-        <body className={inter.className}>
-          <ModalProvider />
-          {children}
-        </body>
+        <AuthSessionProvider session={session}>
+          <body className={inter.className}>
+            <ModalProvider />
+            {children}
+          </body>
+        </AuthSessionProvider>
       </ThirdwebProvider>
     </html>
   );

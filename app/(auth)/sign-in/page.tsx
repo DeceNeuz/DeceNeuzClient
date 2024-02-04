@@ -29,7 +29,7 @@ export default function SignInPage() {
       ...formData,
       redirect: false,
     });
-    router.push("/editor");
+    router.push("/");
   };
 
   return (

@@ -3,21 +3,48 @@
 import { Input } from "@/components/input";
 import { Button } from "@/components/ui/button";
 import React, { ChangeEvent, FormEvent, useState } from "react";
+import axios from "axios";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const EditorPage = () => {
+
+  const router = useRouter()
   const [formData, setFormData] = useState({
     title: "",
     shortDescription: "",
     content: "",
   });
 
+  const {data: session, status} = useSession()
+
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    try {
+      const response = await axios.post(
+        "https://dece-neuz-server.onrender.com/news",
+        {
+          Title: formData.title,
+          Content: formData.content,
+          ShortDescription: formData.shortDescription,
+          User: session?.user.UserName
+        }
+      );
+      // JSON.parse(response.data)
+      if(response.status == 200)
+      {
+        console.log("Post added")
+        router.push("/")
+      }
+    }
+    catch(error) {
+      console.log(error)
+    }
   };
 
   return (

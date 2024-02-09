@@ -8,7 +8,6 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import googleLogo from "@/public/devicon_google.png";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { signIn } from "next-auth/react";
 
 export default function SignInPage() {
   const router = useRouter();
@@ -25,10 +24,6 @@ export default function SignInPage() {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log("Form submitted with data: ", formData);
-    await signIn("credentials", {
-      ...formData,
-      redirect: false,
-    });
     router.push("/");
   };
 

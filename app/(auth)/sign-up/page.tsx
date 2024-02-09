@@ -23,17 +23,6 @@ export default function SignUpPage() {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log("Form submitted with data:", formData);
-    const res = await fetch("https://dece-neuz-server.onrender.com/user", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        Email: formData.email,
-        Password: formData.password,
-        UserName: formData.username,
-      }),
-    });
   };
 
   return (
